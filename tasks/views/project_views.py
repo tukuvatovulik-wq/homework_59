@@ -1,4 +1,5 @@
 from django.db.models import Q
+from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
 
@@ -74,7 +75,6 @@ class ProjectTaskCreateView(CreateView):
         return super().form_valid(form)
 
     def get_project(self):
-        from django.shortcuts import get_object_or_404
         return get_object_or_404(Project, pk=self.kwargs["project_pk"])
 
     def get_context_data(self, **kwargs):
